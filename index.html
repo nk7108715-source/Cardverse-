@@ -35,11 +35,15 @@ async function loadWallet(user){
    say('Signed in, but Firestore wallet document is missing.');return;
   }
   const data=snap.data();
-  if(typeof data.coins!=='number'||!Number.isFinite(data.coins)){
-   balanceEl.textContent='Balance unavailable';noteEl.textContent='Firestore document mein coins field number/Int64 honi chahiye.';
-   say('Wallet error: coins field is missing or not numeric.');return;
-  }
-  balanceEl.textContent=new Intl.NumberFormat('en-IN').format(data.coins)+' 🪙';
+  const coins = Number(data.coins);
+
+if (!Number.isFinite(coins)) {
+  balanceEl.textContent = 'Balance unavailable';
+  noteEl.textContent = 'Coins value invalid hai.';
+  say('Wallet error: invalid coins value.');
+  return;
+ }
+ balanceEl.textContent = new Intl.NumberFormat('en-IN').format(coins) + ' 🪙';
   noteEl.textContent='Balance Firestore se load hua. Coins change karna abhi client se disabled hai.';
   say('Signed in. Real wallet balance loaded from Firestore.');
  }catch(e){
