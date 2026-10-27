@@ -35,6 +35,7 @@ async function loadWallet(user){
    say('Signed in, but Firestore wallet document is missing.');return;
   }
   const data=snap.data();
+  say('DEBUG: fields=' + Object.keys(data).join(', ') + ' | coins=' + String(data.coins) + ' | type=' + typeof data.coins);
   const coins = Number(data.coins);
 
 if (!Number.isFinite(coins)) {
