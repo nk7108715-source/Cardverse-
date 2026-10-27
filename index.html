@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#100d20"><title>CardVerse</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#100d20;color:#fff;font-family:Arial,sans-serif}header{padding:22px 16px;background:linear-gradient(135deg,#30205d,#17132d)}.brand{font-size:28px;font-weight:800;color:#d7c4ff}.tag{font-size:13px;color:#c3b9d9;margin-top:5px}main{max-width:850px;margin:auto;padding:16px}.panel{background:#1c1830;border:1px solid #38304f;border-radius:16px;padding:16px;margin:14px 0}h2{font-size:20px;margin:4px 0 14px}.muted{color:#b8aecb;font-size:13px;line-height:1.5}input{display:block;width:100%;padding:13px;margin:9px 0;border:1px solid #51456c;border-radius:10px;background:#100d20;color:white;font-size:16px}button{border:0;border-radius:10px;padding:12px 14px;font-weight:bold;cursor:pointer}.primary{background:#a98aff;color:#171026}.secondary{background:#34294e;color:white}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.actions button{flex:1}.games{display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;padding:4px 2px 14px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#8e6bda #211b38;-webkit-overflow-scrolling:touch}.game{flex:0 0 158px;min-height:180px;background:linear-gradient(155deg,#292044,#171326);color:white;border:1px solid #55437c;text-align:center;padding:13px 11px;border-radius:18px;scroll-snap-align:start;box-shadow:0 8px 20px #08061166;transition:transform .15s,border-color .15s}.game:active{transform:scale(.97)}.game strong{display:block;margin-top:11px;font-size:15px}.game small{display:block;color:#c9bfdc;margin-top:6px}.game-logo{width:88px;height:88px;margin:0 auto;display:flex;align-items:center;justify-content:center;border-radius:25px;font-size:43px;font-weight:900;box-shadow:inset 0 1px 0 #ffffff55,0 7px 18px #0005;border:1px solid #ffffff30}.logo-teen{background:radial-gradient(circle at 30% 20%,#ffdf91,#e64b58 45%,#701d62)}.logo-rummy{background:radial-gradient(circle at 30% 20%,#b8ffd8,#1cba88 48%,#075b62)}.logo-poker{background:radial-gradient(circle at 30% 20%,#f8d2ff,#9b5bff 48%,#42206f)}.logo-andar{background:radial-gradient(circle at 30% 20%,#ffe5a0,#ff7b38 48%,#a51d49)}.logo-call{background:radial-gradient(circle at 30% 20%,#d4e8ff,#4c7cff 48%,#26316f)}.logo-uno{background:radial-gradient(circle at 30% 20%,#ffb6c4,#ff3e5b 42%,#6e1ba5)}.swipe-hint{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 2px 8px}.swipe-hint span{font-size:12px;color:#b8aecb}.swipe-hint strong{font-size:12px;color:#d7c4ff}#status{white-space:pre-wrap;overflow-wrap:anywhere;color:#ffd76a;line-height:1.5}.coins{font-size:26px;color:#ffd76a;font-weight:bold;margin:8px 0}.hidden{display:none}.playing-cards{display:flex;gap:10px;justify-content:center;margin:18px 0}.playing-card{background:#fff;color:#171326;border-radius:12px;width:82px;height:116px;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;box-shadow:0 5px 14px #0005;border:2px solid #e6ddf7}.playing-card.red{color:#d3264b}.game-actions{display:flex;gap:8px;flex-wrap:wrap}.game-actions button{flex:1}.game-message{text-align:center;color:#ffd76a;min-height:24px;line-height:1.5}.room-table{margin-top:16px;padding:14px;border:1px solid #6c55a0;border-radius:18px;background:radial-gradient(ellipse at center,#176548,#0c3028 70%);text-align:center}.room-table h3{margin:0 0 8px}.room-meta{font-size:12px;color:#e3d8ff;margin-bottom:12px}.seats{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:12px 0}.seat{background:#211a39;border:1px solid #8e75c8;border-radius:12px;padding:10px 8px;min-width:90px;font-size:12px}.seat strong{display:block;margin-bottom:4px}.table-cards{display:flex;justify-content:center;gap:8px;margin:14px 0}.back-card{width:48px;height:68px;border:2px solid #fff;border-radius:8px;background:repeating-linear-gradient(45deg,#6240a2,#6240a2 5px,#34205d 5px,#34205d 10px);display:flex;align-items:center;justify-content:center;font-size:22px}.room-note{font-size:12px;color:#d8f5e9;line-height:1.5}footer{text-align:center;color:#8e849f;padding:22px;font-size:12px}
+</style></head><body>
+<header><div class="brand">🃏 CardVerse</div><div class="tag">Play Together. Rule the Table.</div></header><main>
+<section class="panel" id="authPanel"><h2>Player account</h2><p class="muted">Create an account or sign in with email and password.</p><input id="displayName" autocomplete="nickname" placeholder="Player name (for sign up)"><input id="email" type="email" autocomplete="email" placeholder="Email address"><input id="password" type="password" autocomplete="current-password" minlength="6" placeholder="Password (at least 6 characters)"><div class="actions"><button class="primary" id="signupBtn">Create account</button><button class="secondary" id="loginBtn">Sign in</button></div><button class="secondary" id="resetBtn" style="width:100%;margin-top:9px">Forgot password?</button><p class="muted">Use an email you can access. Never share your password.</p></section>
+<section class="panel hidden" id="accountPanel"><h2>Welcome to CardVerse</h2><div id="welcome"></div><p class="muted">Your saved virtual coin balance</p><div class="coins" id="coinsBalance">Loading wallet…</div><p class="muted" id="walletNote">Reading your balance from Firestore.</p><button class="secondary" id="logoutBtn">Sign out</button></section>
+<section class="panel"><h2>🎮 Choose your game</h2><div class="swipe-hint"><span>Swipe left or right to explore games</span><strong>← SWIPE →</strong></div><div class="games" aria-label="Swipe horizontally to choose a game"><button class="game" data-game="Teen Patti"><div class="game-logo logo-teen">🎴</div><strong>Teen Patti</strong><small>2–7 players</small></button><button class="game" data-game="Rummy"><div class="game-logo logo-rummy">🂡</div><strong>Rummy</strong><small>2–6 players</small></button><button class="game" data-game="Poker"><div class="game-logo logo-poker">♠</div><strong>Poker</strong><small>2–7 players</small></button><button class="game" data-game="Andar Bahar"><div class="game-logo logo-andar">🔴</div><strong>Andar Bahar</strong><small>2–7 players</small></button><button class="game" data-game="Call Break"><div class="game-logo logo-call">🃏</div><strong>Call Break</strong><small>Exactly 4 players</small></button><button class="game" data-game="UNO"><div class="game-logo logo-uno">UNO</div><strong>UNO</strong><small>2–7 players</small></button></div><p class="muted">Game cards are previews. Online rooms, gameplay and voice chat are not connected yet.</p></section>
+<section class="panel hidden" id="roomsPanel">
+<h2>🔐 Private Rooms</h2>
+<p class="muted">Create a room and share its code with friends. Maximum 7 players per room.</p>
+<label for="roomGame">Choose game</label>
+<select id="roomGame" style="display:block;width:100%;padding:13px;margin:9px 0;border:1px solid #51456c;border-radius:10px;background:#100d20;color:white;font-size:16px">
+<option>Teen Patti</option><option>Rummy</option><option>Poker</option><option>Andar Bahar</option><option>Call Break</option><option>UNO</option>
+</select>
+<div class="actions"><button class="primary" id="createRoomBtn">Create Room</button></div>
+<div style="border-top:1px solid #38304f;margin:16px 0"></div>
+<label for="joinCode">Join with room code</label>
+<input id="joinCode" maxlength="6" autocapitalize="characters" placeholder="Enter 6-character code">
+<button class="secondary" id="joinRoomBtn" style="width:100%">Join Room</button>
+<div id="roomResult" class="game-message" aria-live="polite" style="margin-top:14px"></div>
+<div id="roomTable" class="room-table hidden"><h3 id="tableTitle">🎴 Private Game Table</h3><div class="room-meta" id="tableMeta"></div><div class="seats" id="tableSeats"></div><div class="table-cards" aria-hidden="true"><div class="back-card">★</div><div class="back-card">★</div><div class="back-card">★</div></div><p class="room-note" id="tableNote">Room created. Invite friends using the room code.</p><button class="primary" id="startGameBtn" type="button">Start Game (Host)</button><button class="secondary" id="tableDealBtn" type="button" style="margin-top:8px">Deal Practice Cards</button><p class="room-note" id="liveGameStatus">Waiting for host to start.</p></div>
+<button class="secondary" id="closeRoomsBtn" style="width:100%;margin-top:8px">Close Private Rooms</button>
+</section>
+<section class="panel hidden" id="playPanel">
+<h2 id="playTitle">🎴 Teen Patti Practice</h2>
+<p class="muted">Practice demo: cards are random and no coins are deducted or awarded. Online multiplayer is not connected yet.</p>
+<div class="playing-cards" id="playingCards" aria-live="polite">
+<div class="playing-card">?</div><div class="playing-card">?</div><div class="playing-card">?</div>
+</div>
+<p class="game-message" id="gameMessage">Tap “Deal Cards” to start a practice round.</p>
+<div class="game-actions">
+<button class="primary" id="dealCardsBtn">Deal Cards</button>
+<button class="secondary" id="backGamesBtn">Back to Games</button>
+</div>
+</section>
+<section class="panel"><h2>🔐 Play with Friends</h2><p class="muted">Create a private room or join using a friend's code.</p><button class="primary" id="openRoomsBtn" style="width:100%">Private Rooms</button></section>
+<section class="panel"><h2>Status</h2><p id="status">Firebase configuration loaded. Checking connection...</p></section></main><footer>CardVerse · Social gaming starter · Virtual coins only</footer>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail, updateProfile } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, collection, updateDoc, arrayUnion, serverTimestamp, onSnapshot } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+// Firebase Console > Project settings > General > Your apps > SDK setup > Config
+// Config values supplied by the project owner from Firebase Console.
+const firebaseConfig={apiKey:"AIzaSyBASAfpUTGpOG3BVoxfguPomqBzQss4wH8",authDomain:"cardverse-51df6.firebaseapp.com",projectId:"cardverse-51df6",storageBucket:"cardverse-51df6.firebasestorage.app",messagingSenderId:"198960326551",appId:"1:198960326551:web:8600240c8b087964a386d2",measurementId:"G-46CYVM1DRE"};
+const statusEl=document.getElementById('status'),authPanel=document.getElementById('authPanel'),accountPanel=document.getElementById('accountPanel');const say=m=>statusEl.textContent=m;const ready=!firebaseConfig.apiKey.includes('PASTE_')&&!firebaseConfig.appId.includes('PASTE_')&&!firebaseConfig.storageBucket.includes('PASTE_');let auth=null,db=null;
+if(ready){try{const app=initializeApp(firebaseConfig);auth=getAuth(app);db=getFirestore(app);say('Firebase connected. Create an account or sign in.')}catch(e){say('Firebase setup error: '+e.message)}}else{say('Firebase config is present. If login fails, check Authorized domains and Email/Password sign-in in Firebase Console.')}
+function errMsg(e){const m={'auth/email-already-in-use':'This email already has an account. Try Sign in.','auth/invalid-email':'Enter a valid email address.','auth/weak-password':'Use a stronger password with at least 6 characters.','auth/invalid-credential':'Email or password is incorrect.','auth/network-request-failed':'Network error. Check your internet connection.','auth/operation-not-allowed':'Email/Password provider is not enabled in Firebase.'};return m[e.code]||e.message||'Something went wrong.'}
+document.getElementById('signupBtn').onclick=async()=>{if(!auth)return say('Add the complete Firebase config first.');const name=document.getElementById('displayName').value.trim(),email=document.getElementById('email').value.trim(),password=document.getElementById('password').value;if(!name)return say('Enter a player name.');if(!email||password.length<6)return say('Enter email and password (at least 6 characters).');try{const c=await createUserWithEmailAndPassword(auth,email,password);await updateProfile(c.user,{displayName:name});say('Account created successfully.')}catch(e){say(errMsg(e))}};
+document.getElementById('loginBtn').onclick=async()=>{if(!auth)return say('Add the complete Firebase config first.');const email=document.getElementById('email').value.trim(),password=document.getElementById('password').value;if(!email||!password)return say('Enter email and password.');try{await signInWithEmailAndPassword(auth,email,password);say('Signed in successfully.')}catch(e){say(errMsg(e))}};
+document.getElementById('resetBtn').onclick=async()=>{if(!auth)return say('Add the complete Firebase config first.');const email=document.getElementById('email').value.trim();if(!email)return say('Enter your email first.');try{await sendPasswordResetEmail(auth,email);say('If an account exists for this email, a reset email has been sent.')}catch(e){say(errMsg(e))}};
+document.getElementById('logoutBtn').onclick=async()=>{if(auth)try{await signOut(auth);say('Signed out.')}catch(e){say(errMsg(e))}};
+async function loadWallet(user){
+ const balanceEl=document.getElementById('coinsBalance'),noteEl=document.getElementById('walletNote');
+ balanceEl.textContent='Loading…';noteEl.textContent='Reading saved balance from Firestore.';
+ try{
+  const snap=await getDoc(doc(db,'users',user.uid));
+  if(!snap.exists()){
+   balanceEl.textContent='Wallet not set up';
+   noteEl.textContent='Firestore users/'+user.uid+' document nahi mila. Firebase Console mein is UID ka document aur numeric coins field check karein.';
+   say('Signed in, but Firestore wallet document is missing.');return;
+  }
+  const data=snap.data();
+  const rawCoins = data.coins;
+  const coins = typeof rawCoins === 'number'
+    ? rawCoins
+    : (typeof rawCoins === 'string' && rawCoins.trim() !== '' ? Number(rawCoins) : NaN);
+  if (!Number.isFinite(coins)) {
+   const details = 'DEBUG wallet: fields=[' + Object.keys(data).join(', ') + '], coins=' + String(rawCoins) + ', type=' + typeof rawCoins;
+   balanceEl.textContent='Balance unavailable';
+   noteEl.textContent=details;
+   say(details + ' | Firestore mein exact field name coins aur value 500000 check karein.');
+   return;
+  }
+  balanceEl.textContent=new Intl.NumberFormat('en-IN').format(coins)+' 🪙';
+  noteEl.textContent='Balance Firestore se load hua. Coins change karna abhi client se disabled hai.';
+  say('Signed in. Real wallet balance loaded from Firestore.');
+ }catch(e){
+  balanceEl.textContent='Could not load';
+  noteEl.textContent='Firestore read failed: '+(e.code||e.message)+'. Rules aur users/{UID} document check karein.';
+  say('Wallet read error: '+(e.code||e.message));
+ }
+}
+if(auth)onAuthStateChanged(auth,async user=>{authPanel.classList.toggle('hidden',!!user);accountPanel.classList.toggle('hidden',!user);if(user){document.getElementById('welcome').textContent=(user.displayName||'Player')+' · '+user.email;await loadWallet(user)}else{document.getElementById('coinsBalance').textContent='—';document.getElementById('walletNote').textContent='Sign in to load your saved balance.';say('Signed out.')}});
+const roomsPanel=document.getElementById('roomsPanel');
+const roomResult=document.getElementById('roomResult');
+function currentUser(){return auth?.currentUser||null}
+let activeRoomCode=null, stopRoomListener=null;
+function listenToRoom(code){
+ if(stopRoomListener){stopRoomListener();stopRoomListener=null;}
+ activeRoomCode=code;
+ stopRoomListener=onSnapshot(doc(db,'rooms',code),snap=>{
+  if(!snap.exists()){roomResult.textContent='Room ab available nahi hai.';return;}
+  const room=snap.data();showRoomTable(code,room);
+ },err=>{roomResult.textContent='Live update error: '+(err.code||err.message);});
+}
+function showRoomTable(code, room){
+ const user=currentUser();const box=document.getElementById('roomTable');box.classList.remove('hidden');
+ document.getElementById('tableTitle').textContent='🎴 '+room.game+' Table';
+ document.getElementById('tableMeta').textContent='Room: '+code+' · Players: '+(room.playerUids||[]).length+'/'+(room.maxPlayers||7);
+ const seats=document.getElementById('tableSeats');seats.replaceChildren();
+ (room.playerUids||[]).forEach((uid,i)=>{const seat=document.createElement('div');seat.className='seat';const strong=document.createElement('strong');strong.textContent=uid===room.hostUid?'👑 Host':(uid===user?.uid?'🙂 You':'🧑 Player '+(i+1));const small=document.createElement('span');small.textContent=uid===room.hostUid?'Room owner':(uid===user?.uid?'Connected':'Joined');seat.append(strong,small);seats.appendChild(seat)});
+ document.getElementById('tableNote').textContent=(room.game==='Teen Patti'?'Teen Patti table preview. Use Deal Practice Cards for a local demo; cards are not synchronized with other players.':'Table preview for '+room.game+'. Its actual online game logic is not connected yet.')+' Share code '+code+' with friends.';
+ document.getElementById('tableDealBtn').style.display=room.game==='Teen Patti'?'block':'none';
+ const me=currentUser();
+ const isHost=!!me && room.hostUid===me.uid;
+ const startBtn=document.getElementById('startGameBtn');
+ startBtn.style.display=isHost?'block':'none';
+ startBtn.disabled=room.gameStatus==='playing';
+ startBtn.textContent=room.gameStatus==='playing'?'Game Started':'Start Game (Host)';
+ document.getElementById('liveGameStatus').textContent=room.gameStatus==='playing'?'Game started by host. Real-time card dealing is the next feature.':'Waiting for host to start. Player list updates live.';
+}
+function makeRoomCode(){const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let code='';for(let i=0;i<6;i++)code+=chars[Math.floor(Math.random()*chars.length)];return code}
+async function createPrivateRoom(){
+ const user=currentUser();if(!user){roomResult.textContent='Pehle sign in karo.';return}
+ roomResult.textContent='Room bana rahe hain…';
+ try{
+  let code,exists=true;
+  for(let tries=0;tries<5&&exists;tries++){
+   code=makeRoomCode();
+   const existing=await getDoc(doc(db,'rooms',code));
+   exists=existing.exists();
+  }
+  if(exists){roomResult.textContent='Code nahi ban saka. Dobara try karo.';return}
+  const game=document.getElementById('roomGame').value;
+  await setDoc(doc(db,'rooms',code),{roomCode:code,game,hostUid:user.uid,playerUids:[user.uid],maxPlayers:7,gameStatus:'waiting',createdAt:serverTimestamp()});
+  const roomData={roomCode:code,game,hostUid:user.uid,playerUids:[user.uid],maxPlayers:7,gameStatus:'waiting'};
+  roomResult.textContent='Room created! Code: '+code+' | Game: '+game+' | Players: 1/7. Dost ko code share karo.';
+  showRoomTable(code,roomData);listenToRoom(code);
+  say('Private room created. Share code '+code+' with friends.');
+ }catch(e){roomResult.textContent='Room create nahi hua: '+(e.code||e.message)+'. Firestore rules update karni hongi.';say('Private room error: '+(e.code||e.message))}
+}
+async function joinPrivateRoom(){
+ const user=currentUser();if(!user){roomResult.textContent='Pehle sign in karo.';return}
+ const code=document.getElementById('joinCode').value.trim().toUpperCase();
+ if(!/^[A-HJ-NP-Z2-9]{6}$/.test(code)){roomResult.textContent='6-character room code sahi daalo.';return}
+ roomResult.textContent='Room dhoondh rahe hain…';
+ try{
+  const roomSnap=await getDoc(doc(db,'rooms',code));
+  if(!roomSnap.exists()){roomResult.textContent='Room nahi mila. Code check karo.';return}
+  const roomDoc=roomSnap,room=roomSnap.data(),players=room.playerUids||[];
+  if(players.includes(user.uid)){roomResult.textContent='Tum already room mein ho. Code: '+code+' | Game: '+room.game+' | Players: '+players.length+'/'+room.maxPlayers;showRoomTable(code,room);listenToRoom(code);return}
+  if(players.length>=room.maxPlayers){roomResult.textContent='Room full hai.';return}
+  await updateDoc(doc(db,'rooms',code),{playerUids:arrayUnion(user.uid)});
+  const updatedRoom={...room,playerUids:[...players,user.uid]};
+  roomResult.textContent='Room join ho gaya! Code: '+code+' | Game: '+room.game+' | Players: '+updatedRoom.playerUids.length+'/'+room.maxPlayers;
+  showRoomTable(code,updatedRoom);listenToRoom(code);
+  say('Joined private room '+code+'.');
+ }catch(e){roomResult.textContent='Join nahi hua: '+(e.code||e.message)+'. Firestore rules update karni hongi.';say('Private room error: '+(e.code||e.message))}
+}
+document.getElementById('startGameBtn').onclick=async()=>{
+ const user=currentUser();if(!user||!activeRoomCode)return;
+ try{const snap=await getDoc(doc(db,'rooms',activeRoomCode));if(!snap.exists())return;const room=snap.data();if(room.hostUid!==user.uid){roomResult.textContent='Sirf host game start kar sakta hai.';return;}if(room.gameStatus==='playing'){roomResult.textContent='Game pehle hi start ho chuka hai.';return;}await updateDoc(doc(db,'rooms',activeRoomCode),{gameStatus:'playing',startedAt:serverTimestamp()});roomResult.textContent='Game started! Live room status sab players ko update hoga.';}catch(e){roomResult.textContent='Start nahi hua: '+(e.code||e.message)+'. Firestore rules update karo.';}
+};
+document.getElementById('tableDealBtn').onclick=()=>{if(document.getElementById('tableTitle').textContent.includes('Teen Patti')){dealPracticeCards();document.getElementById('gameMessage').textContent='Practice cards dealt below in the Teen Patti practice panel. This is not a synchronized multiplayer deal.';playPanel.classList.remove('hidden');playPanel.scrollIntoView({behavior:'smooth',block:'start'});} };
+document.getElementById('createRoomBtn').onclick=createPrivateRoom;
+document.getElementById('joinRoomBtn').onclick=joinPrivateRoom;
+document.getElementById('closeRoomsBtn').onclick=()=>roomsPanel.classList.add('hidden');
+document.getElementById('openRoomsBtn').onclick=()=>{
+ if(!auth?.currentUser){say('Private rooms use karne ke liye pehle sign in karo.');document.getElementById('authPanel').scrollIntoView({behavior:'smooth'});return}
+ roomsPanel.classList.remove('hidden');roomsPanel.scrollIntoView({behavior:'smooth',block:'start'});
+};
+const playPanel=document.getElementById('playPanel');
+const playingCards=document.getElementById('playingCards');
+const gameMessage=document.getElementById('gameMessage');
+let selectedGame='Teen Patti';
+const suits=[{symbol:'♠',red:false},{symbol:'♥',red:true},{symbol:'♦',red:true},{symbol:'♣',red:false}];
+function dealPracticeCards(){
+ const deck=[];
+ for(let n=2;n<=14;n++) for(const suit of suits) deck.push({n,suit});
+ for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]]}
+ const hand=deck.slice(0,3);
+ playingCards.replaceChildren();
+ hand.forEach(card=>{
+  const el=document.createElement('div');
+  el.className='playing-card'+(card.suit.red?' red':'');
+  const rank=card.n===14?'A':card.n===13?'K':card.n===12?'Q':card.n===11?'J':String(card.n);
+  el.textContent=rank+card.suit.symbol;
+  playingCards.appendChild(el);
+ });
+ gameMessage.textContent='Practice cards dealt! This demo round does not use coins.';
+}
+document.querySelectorAll('[data-game]').forEach(b=>b.onclick=()=>{
+ selectedGame=b.dataset.game;
+ if(selectedGame==='Teen Patti'){
+  playPanel.classList.remove('hidden');
+  document.getElementById('playTitle').textContent='🎴 Teen Patti Practice';
+  gameMessage.textContent='Tap “Deal Cards” to start a practice round.';
+  playingCards.innerHTML='<div class="playing-card">?</div><div class="playing-card">?</div><div class="playing-card">?</div>';
+  playPanel.scrollIntoView({behavior:'smooth',block:'start'});
+  say('Teen Patti practice opened. No coins are used.');
+ }else{
+  say(selectedGame+' selected. This game is not playable yet; Teen Patti practice is available.');
+ }
+});
+document.getElementById('dealCardsBtn').onclick=dealPracticeCards;
+document.getElementById('backGamesBtn').onclick=()=>{
+ playPanel.classList.add('hidden');
+ document.querySelector('.games').scrollIntoView({behavior:'smooth',block:'start'});
+};
+</script></body></html>
